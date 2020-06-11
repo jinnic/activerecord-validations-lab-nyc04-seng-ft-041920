@@ -16,6 +16,7 @@ class Post < ActiveRecord::Base
 
   def must_be_clickbaits
     if title
+        #.none on array returns boolean | .match(pattern) on string returns boolean
         if CLICKBAITS.none? {|c| c.match?(title) }
           errors.add(:title, "must be a clickbait")
         end
